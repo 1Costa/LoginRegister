@@ -21,7 +21,7 @@ import cz.msebera.android.httpclient.Header;
 
 public class LoginActivity extends AppCompatActivity {
 
-    EditText name = null ;
+    EditText username = null ;
     EditText password= null ;
     TextView registerLink = null ;
     Button login = null;
@@ -32,7 +32,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        name = (EditText)findViewById(R.id.name);
+        username = (EditText)findViewById(R.id.username);
         password = (EditText) findViewById(R.id.password);
         login = (Button)findViewById(R.id.buttonLogin);
         registerLink = (TextView) findViewById(R.id.registerLink) ;
