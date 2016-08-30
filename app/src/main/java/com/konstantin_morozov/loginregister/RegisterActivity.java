@@ -70,8 +70,8 @@ public class RegisterActivity extends AppCompatActivity {
 
 
     public void register (final String user, final String username, String pass){
-
-        System.out.println(user +'_'+ username);
+        // Check to see output data
+        //System.out.println(user +'_'+ username);
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
         params.put("user", user);
