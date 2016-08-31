@@ -107,7 +107,7 @@ public class LoginActivity extends AppCompatActivity {
         params.put("username", username);
         params.put("password", pass);
 
-        client.post("http://konstantinmorozov.pe.hu/connect.php", params, new JsonHttpResponseHandler(){
+        client.post("http://konstantinmorozov.pe.hu/login.php", params, new JsonHttpResponseHandler(){
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 //super.onSuccess(statusCode, headers, response);
@@ -115,9 +115,10 @@ public class LoginActivity extends AppCompatActivity {
                     String valid = response.getString("result");
                     String username = response.getString("username");
                     //String userID = response.getString("user_id") ;
-                    if (valid.equals("0")){
+                    if (valid.equals("1")){
                         Toast.makeText(LoginActivity.this, "You are logged as: "+ username,Toast.LENGTH_LONG).show();
-                    }else{
+                    }
+                    if (valid.equals("0")){
                         Toast.makeText(LoginActivity.this,"Incorrect username/password entered",Toast.LENGTH_LONG).show();
                         password.setText("");
                     }
@@ -138,10 +139,12 @@ public class LoginActivity extends AppCompatActivity {
         }else if(!text.matches("[a-zA-Z0-9_]*")){
             Toast.makeText(LoginActivity.this, "Letters, numbers and underscore only", Toast.LENGTH_SHORT).show() ;
             return false ;
-        }else if(text.length() < 6){
-            Toast.makeText(LoginActivity.this, "Username/Password must be at least 6 characters", Toast.LENGTH_SHORT).show() ;
-            return false ;
-        }else{
+        }
+        //else if(text.length() < 6){
+       //     Toast.makeText(LoginActivity.this, "Username/Password must be at least 6 characters", Toast.LENGTH_SHORT).show() ;
+        //    return false ;
+       // }
+        else{
             return true ;
         }
     }

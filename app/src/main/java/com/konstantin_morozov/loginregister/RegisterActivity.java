@@ -69,14 +69,15 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
 
-    public void register (final String user, final String username, String pass){
+    public void register (final String user, final String username, String mdpass){
         // Check to see output data
         //System.out.println(user +'_'+ username);
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
         params.put("user", user);
         params.put("username", username);
-        params.put("password", pass);
+        params.put("password", mdpass);
+
 
         client.post("http://konstantinmorozov.pe.hu/register.php", params, new JsonHttpResponseHandler() {
 
