@@ -1,8 +1,10 @@
 package com.konstantin_morozov.loginregister;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -97,11 +99,23 @@ public class RegisterActivity extends AppCompatActivity {
                         uPass = "" ;
 
                     }else{
-                        Toast.makeText(RegisterActivity.this, "Registered successfully", Toast.LENGTH_SHORT).show() ;
+                        AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
+                        builder.setMessage("Registered successfully")
+                                .setPositiveButton("Cool", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class) ;
+                                        startActivity(intent) ;
+                                        finish() ;
+                                    }
+                                })
+                                .create()
+                                .show();
 
-                        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class) ;
-                        startActivity(intent) ;
-                        finish() ;
+
+                        //Toast.makeText(RegisterActivity.this, "Registered successfully", Toast.LENGTH_SHORT).show() ;
+
+
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
